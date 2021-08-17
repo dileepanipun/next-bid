@@ -6,6 +6,11 @@
       "type": "menu-item"
     },
     {
+      "title": "New Bid \uD83C\uDFC6",
+      "url": "seller-add-new-bid.html",
+      "type": "menu-item"
+    },
+    {
       "title": "About Us",
       "url": "#",
       "type": "menu-item"
