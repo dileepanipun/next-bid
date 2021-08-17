@@ -8,7 +8,8 @@
     {
       "title": "New Bid \uD83C\uDFC6",
       "url": "seller-add-new-bid.html",
-      "type": "menu-item"
+      "type": "menu-item",
+      "available": "seller"
     },
     {
       "title": "About Us",
@@ -28,44 +29,52 @@
         {
           "title": "Profile",
           "url": "user-profile.html",
-          "type": "sub-menu-item"
+          "type": "sub-menu-item",
+          "available": "customer"
         },
         {
           "title": "Seller Profile",
           "url": "seller-profile.html",
-          "type": "sub-menu-item"
+          "type": "sub-menu-item",
+          "available": "seller"
         },
         {
           "title": "Wallet",
           "url": "user-wallet.html",
-          "type": "sub-menu-item"
+          "type": "sub-menu-item",
+          "available": "customer"
         },
         {
           "title": "My Bidding",
           "url": "user-bidding-history.html",
-          "type": "sub-menu-item"
+          "type": "sub-menu-item",
+          "available": "customer"
         },
         {
           "title": "Ongoing Bids",
           "url": "seller-ongoing-bids.html",
-          "type": "sub-menu-item"
+          "type": "sub-menu-item",
+          "available": "seller"
         },
         {
           "title": "Bids List",
           "url": "seller-bids-history.html",
-          "type": "sub-menu-item"
+          "type": "sub-menu-item",
+          "available": "seller"
         },
         {
           "title": "Logout",
           "url": "user-login.html",
-          "type": "sub-menu-item"
+          "type": "sub-menu-item",
+          "callback": "logoutNRedirectToLogin()"
         }
       ]
     },
     {
       "title": "Switch to Selling",
       "url": "user-login.html",
-      "type": "button"
+      "type": "button",
+      "callback": "switchToOtherAccount()"
     }
   ]
 }

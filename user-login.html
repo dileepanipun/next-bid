@@ -49,12 +49,12 @@
 
                             <p class="mb-5 fw-normal">Use your account details to login and continue your bidding.</p>
 
-                            <form>
+                            <form id="loginForm">
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputEmail1">Email address</label>
                                     <input aria-describedby="emailHelp" class="form-control border-0 bg-light"
                                            id="exampleInputEmail1"
-                                           type="email">
+                                           name="username" type="email">
                                     <div class="form-text" id="emailHelp">We'll never share your email with anyone
                                         else.
                                     </div>
@@ -62,10 +62,11 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputPassword1">Password</label>
                                     <input class="form-control border-0 bg-light" id="exampleInputPassword1"
-                                           type="password">
+                                           name="password" type="password">
                                 </div>
                                 <div class="mb-3 form-check">
-                                    <input class="form-check-input" id="exampleCheck1" type="checkbox">
+                                    <input class="form-check-input" id="exampleCheck1" name="remember_me"
+                                           type="checkbox">
                                     <label class="form-check-label" for="exampleCheck1">Remember Me</label>
                                 </div>
 
@@ -173,6 +174,10 @@
 <script src="js/controller/base_controller.js"></script>
 
 <script src="js/controller/header-controller.js" type="module"></script>
+
+<script src="js/controller/auth-controller.js"></script>
+
+<script src="js/controller/user-controller.js"></script>
 
 </body>
 </html>

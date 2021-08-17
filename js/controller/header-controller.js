@@ -8,8 +8,17 @@ function createMenuListItem(liData) {
         classes = "nav-link active";
     }
 
-    return `<li class="${!(liData.type === "sub-menu-item") ? "nav-item m-sm-1 m-md-1 m-lg-3" : ""}">
-                <a class="${classes}" aria-current="page" href="${liData.url}">${liData.title}</a>
+    let liClass = "";
+    let available = false;
+    if (localStorage.hasOwnProperty("nextbid_login") && liData.hasOwnProperty("available")) {
+        available = localStorage.hasOwnProperty("nextbid_login") && JSON.parse(localStorage.getItem("nextbid_login")).type === liData.available;
+    }
+    liClass = available ? liClass + "" : liClass + " d-none";
+
+    let url = liData.hasOwnProperty("callback") ? 'javascript:' + liData.callback + '' : liData.url;
+
+    return `<li class="${liClass} ${!(liData.type === "sub-menu-item") ? "nav-item m-sm-1 m-md-1 m-lg-3" : ""}">
+                <a class="${classes}" aria-current="page" href="${url}">${liData.title}</a>
             </li>`;
 }
 
@@ -40,21 +49,21 @@ $(document).ready(function () {
             if (!response.ok) {
                 throw new Error()
             }
+            console.log(response);
             return response.json();
         })
         .then(json => {
-            console.log(json);
+            console.log(json)
             json['menu_items'].forEach((element, index) => {
                 if (element.sub_menu) {
                     headerEle.append(getInnerSubMenu(element));
                 } else {
                     headerEle.append(createMenuListItem(element));
                 }
-                console.log(element);
             });
         })
         .catch(reason => {
-            console.log(reason);
+            console.log(reason)
             Toast.fire({
                 icon: 'error',
                 title: 'Something went wrong! Please try again.'
