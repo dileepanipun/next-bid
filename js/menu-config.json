@@ -1,0 +1,56 @@
+{
+  "menu_items": [
+    {
+      "title": "Home",
+      "url": "index.html",
+      "type": "menu-item"
+    },
+    {
+      "title": "About Us",
+      "url": "#",
+      "type": "menu-item"
+    },
+    {
+      "title": "Contact Us",
+      "url": "#",
+      "type": "menu-item"
+    },
+    {
+      "title": "Customer Name",
+      "url": "#",
+      "type": "menu-item",
+      "sub_menu": [
+        {
+          "title": "Profile",
+          "url": "user-profile.html",
+          "type": "sub-menu-item"
+        },
+        {
+          "title": "Wallete",
+          "url": "user-wallet.html",
+          "type": "sub-menu-item"
+        },
+        {
+          "title": "My Bidding",
+          "url": "user-bidding-history.html",
+          "type": "sub-menu-item"
+        },
+        {
+          "title": "Logout",
+          "url": "user-login.html",
+          "type": "sub-menu-item"
+        }
+      ]
+    },
+    {
+      "title": "Switch to Selling",
+      "url": "login.html",
+      "type": "button"
+    },
+    {
+      "title": "Switch to Buying",
+      "url": "login.html",
+      "type": "button"
+    }
+  ]
+}
