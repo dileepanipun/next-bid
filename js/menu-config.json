@@ -26,6 +26,11 @@
           "type": "sub-menu-item"
         },
         {
+          "title": "Seller Profile",
+          "url": "seller-profile.html",
+          "type": "sub-menu-item"
+        },
+        {
           "title": "Wallet",
           "url": "user-wallet.html",
           "type": "sub-menu-item"
@@ -36,6 +41,16 @@
           "type": "sub-menu-item"
         },
         {
+          "title": "Ongoing Bids",
+          "url": "seller-ongoing-bids.html",
+          "type": "sub-menu-item"
+        },
+        {
+          "title": "Bids List",
+          "url": "seller-bids-history.html",
+          "type": "sub-menu-item"
+        },
+        {
           "title": "Logout",
           "url": "user-login.html",
           "type": "sub-menu-item"
@@ -43,7 +58,7 @@
       ]
     },
     {
-      "title": "Switch to ",
+      "title": "Switch to Selling",
       "url": "user-login.html",
       "type": "button"
     }
