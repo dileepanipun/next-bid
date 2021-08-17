@@ -26,7 +26,7 @@
           "type": "sub-menu-item"
         },
         {
-          "title": "Wallete",
+          "title": "Wallet",
           "url": "user-wallet.html",
           "type": "sub-menu-item"
         },
@@ -43,13 +43,8 @@
       ]
     },
     {
-      "title": "Switch to Selling",
-      "url": "login.html",
-      "type": "button"
-    },
-    {
-      "title": "Switch to Buying",
-      "url": "login.html",
+      "title": "Switch to ",
+      "url": "user-login.html",
       "type": "button"
     }
   ]
