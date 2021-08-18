@@ -46,57 +46,84 @@
 
             <div class="row">
                 <div class="col-md-6 col-lg-8 col-sm-12">
-                    <form>
-                        <div class="form-group row mb-3">
-                            <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidTitleInput">Bid
-                                Title</label>
-                            <div class="col-lg col-md col-sm-12">
-                                <input class="form-control border-0 bg-light" id="bidTitleInput" type="text">
+                    <form class="row needs-validation" id="createNewBidForm" novalidate>
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidTitleInput">
+                                Bid Title
+                            </label>
+                            <input class="form-control border-0 bg-light" id="bidTitleInput"
+                                   onkeyup="updateCardTitle(this)" pattern="^[a-zA-Z ]*$"
+                                   placeholder="Enter bid title here" required
+                                   type="text">
+                            <div class="invalid-feedback">
+                                Please enter valid bid description!
                             </div>
                         </div>
 
-                        <div class="form-group row mb-3">
-                            <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidDescriptionInput">Bid
-                                Description</label>
-                            <div class="col-lg col-md col-sm-12">
-                                    <textarea class="form-control border-0 bg-light" id="bidDescriptionInput"
-                                              rows="3" type="text"></textarea>
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidDescriptionInput">
+                                Bid Description
+                            </label>
+                            <textarea class="form-control border-0 bg-light" id="bidDescriptionInput"
+                                      placeholder="Enter description" required rows="3" type="text"></textarea>
+                            <div class="invalid-feedback">
+                                Please enter valid bid description!
                             </div>
                         </div>
 
-                        <div class="form-group row mb-3">
-                            <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidTitleInput">Starts
-                                In</label>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidTitleInput">
+                                Starts In
+                            </label>
+                            <input class="form-control border-0 bg-light" id="bidStartsDateTime" required
+                                   type="datetime-local">
+                            <div class="invalid-feedback">
+                                Please enter valid starts in date time!
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidTitleInput">
+                                Ends In
+                            </label>
                             <div class="input-group col-lg col-md col-sm-12">
-                                <input class="form-control border-0 bg-light" id="bidStartsDate" type="date">
-                                <input class="form-control border-0 bg-light input-group-append" id="bidStartsTime"
-                                       type="time">
+                                <input class="form-control border-0 bg-light" id="bidEndsDate"
+                                       onchange="updateEndsIn(this)"
+                                       required type="datetime-local">
+                                <div class="invalid-feedback">
+                                    Please enter valid ends in date time!
+                                </div>
                             </div>
                         </div>
 
-                        <div class="form-group row mb-3">
-                            <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidTitleInput">Ends
-                                In</label>
-                            <div class="input-group col-lg col-md col-sm-12">
-                                <input class="form-control border-0 bg-light" id="bidEndsDate" type="date">
-                                <input class="form-control border-0 bg-light input-group-append" id="bidEndsTime"
-                                       type="time">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidImageInput">
+                                Select Bid Image
+                            </label>
+                            <input accept="image/png" class="form-control border-0 bg-light" id="bidImageInput"
+                                   onchange="updateImagePreview(event)"
+                                   required type="file">
+                            <div class="invalid-feedback">
+                                Please enter valid start date time!
                             </div>
                         </div>
 
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidImageInput">
+                                Set start point
+                            </label>
+                            <input class="form-control border-0 bg-light" id="bidStartFrom"
+                                   onkeyup="updateStartFrom(this)" placeholder="Enter starts value"
+                                   required type="number">
+                            <div class="invalid-feedback">
+                                Please enter valid start date time!
+                            </div>
+                        </div>
 
                         <div class="alert alert-warning" role="alert">
                             <span class="fw-bold">Attention!</span>
                             Your bids will automatically run on the website for customers and will notify you after
                             ending. WInner and the prices will automatically claimed by the <b>N E X T Bid</b> System.
-                        </div>
-
-                        <div class="form-group row mb-3">
-                            <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidTitleInput">Bid Start
-                                From</label>
-                            <div class="col-lg col-md col-sm-12">
-                                <input class="form-control border-0 bg-light" id="bidStartFromInput" type="number">
-                            </div>
                         </div>
 
                         <div class="row">
@@ -118,19 +145,18 @@
                             <div class="d-flex flex-row justify-content-between mb-3">
                                 <div>
                                     <p class="mb-0">Ends In</p>
-                                    <p class="mb-0 fw-bold">08/05 - 21h 23m 03s</p>
+                                    <p class="mb-0 fw-bold" id="bidEndsDatePreview">08/05 - 21h 23m 03s</p>
                                 </div>
                                 <div class="text-end">
-                                    <p class="mb-0">Highest Bid</p>
-                                    <p class="mb-0 fw-bold">550.00 LKR</p>
+                                    <p class="mb-0">Starts from</p>
+                                    <p class="mb-0 fw-bold" id="bidStartFromPreview">0.00 LKR</p>
                                 </div>
                             </div>
 
-                            <img alt="bid-image" src="https://via.placeholder.com/300"
+                            <img alt="bid-image" id="bidImageInputPreview" src="https://via.placeholder.com/300"
                                  style="width: 100%;height: 300px;border-radius: 10px;object-fit: cover;object-position: center;">
 
-                            <h5 class="text-center my-3 fw-bold">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                elit.</h5>
+                            <h5 class="text-center my-3 fw-bold" id="bidTitleInputPreview">Title goes here</h5>
 
                             <a class="btn btn-primary fw-bold w-100 py-3 border-0" href="user-bid-detail.html"
                                style="border-radius: 10px;">
@@ -222,11 +248,15 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
+<script src="js/moment.min.js"></script>
+
 <script src="js/controller/base_controller.js"></script>
 
 <script src="js/controller/header-controller.js" type="module"></script>
 
 <script src="js/controller/auth-controller.js"></script>
+
+<script src="js/controller/seller-new-bid-controller.js"></script>
 
 </body>
 </html>

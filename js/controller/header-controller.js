@@ -66,28 +66,38 @@ function getInnerSubMenu(subMenuData) {
 
 $(document).ready(function () {
     const headerEle = $('header #topMenuWrapper');
+
     headerEle.empty();
 
-    fetch("./js/menu-config.json")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error()
-            }
-            return response.json();
-        })
-        .then(json => {
-            json['menu_items'].forEach((element, index) => {
-                if (element.sub_menu) {
-                    headerEle.append(getInnerSubMenu(element));
-                } else {
-                    headerEle.append(createMenuListItem(element));
-                }
-            });
-        })
-        .catch(reason => {
-            Toast.fire({
-                icon: 'error',
-                title: 'Something went wrong! Please try again.'
-            })
-        });
+    menu['menu_items'].forEach((element, index) => {
+        if (element.sub_menu) {
+            headerEle.append(getInnerSubMenu(element));
+        } else {
+            headerEle.append(createMenuListItem(element));
+        }
+    });
+
+
+    // fetch("./js/menu-config.json")
+    //     .then(response => {
+    //         if (!response.ok) {
+    //             throw new Error()
+    //         }
+    //         return response.json();
+    //     })
+    //     .then(json => {
+    //         json['menu_items'].forEach((element, index) => {
+    //             if (element.sub_menu) {
+    //                 headerEle.append(getInnerSubMenu(element));
+    //             } else {
+    //                 headerEle.append(createMenuListItem(element));
+    //             }
+    //         });
+    //     })
+    //     .catch(reason => {
+    //         Toast.fire({
+    //             icon: 'error',
+    //             title: 'Something went wrong! Please try again.'
+    //         })
+    //     });
 });
