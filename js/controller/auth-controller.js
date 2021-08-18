@@ -25,13 +25,20 @@ function checkLogins() {
             });
         }
     } else {
-        Toast.fire({
-            icon: 'error',
-            title: 'Please login first!'
-        }).then(() => {
-            if (window.location.href !== baseUrl + 'user-login.html')
-                window.location.href = baseUrl + 'user-login.html';
-        });
+        if (window.location.href === baseUrl + "user-register.html") {
+            Toast.fire({
+                icon: 'info',
+                title: 'Fill this form with your data to register!'
+            });
+        } else {
+            Toast.fire({
+                icon: 'error',
+                title: 'Please login first!'
+            }).then(() => {
+                if (window.location.href !== baseUrl + 'user-login.html')
+                    window.location.href = baseUrl + 'user-login.html';
+            });
+        }
     }
 }
 

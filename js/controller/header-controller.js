@@ -25,10 +25,8 @@ function createMenuListItem(liData) {
             extra = (userType === "customer") ? "Selling" : "Buying";
         }
 
-        console.log('Available : ', userType, available);
     } else {
         available = "customer" === liData.available || "all" === liData.available;
-        console.log('Available : ', "default :", liData.available, available);
     }
 
     liClass = available ? liClass + "" : liClass + " d-none";
@@ -49,7 +47,6 @@ function getInnerSubMenu(subMenuData) {
         userName = subMenuData.title;
     }
 
-    console.log('submenu :', subMenuData.auth)
     let subMenuHeader = `<li class="nav-item dropdown m-sm-1 m-md-1 m-lg-3 ${subMenuData.auth ? '' : ' d-none'}">
                         <a class="nav-link dropdown-toggle" href="${subMenuData.url}" id="navbarDropdown" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
