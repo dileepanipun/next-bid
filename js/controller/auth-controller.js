@@ -1,3 +1,7 @@
+// let availableRoutes = [
+//     "", "index.html", "about-us.html", "contact-us.html",
+// ]
+
 // check saved user logins
 function checkLogins() {
     if (localStorage.hasOwnProperty("nextbid_login")) {

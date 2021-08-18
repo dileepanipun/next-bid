@@ -35,5 +35,7 @@ function switchToOtherAccount() {
         loginData.type = loginData.type === "customer" ? "seller" : "customer";
         localStorage.setItem("nextbid_login", JSON.stringify(loginData));
         window.location.reload();
+    } else {
+        checkLogins();
     }
 }

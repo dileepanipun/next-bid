@@ -10,23 +10,50 @@ function createMenuListItem(liData) {
 
     let liClass = "";
     let available = false;
-    if (localStorage.hasOwnProperty("nextbid_login") && liData.hasOwnProperty("available")) {
-        available = localStorage.hasOwnProperty("nextbid_login") && JSON.parse(localStorage.getItem("nextbid_login")).type === liData.available;
+    let hasLogin = localStorage.hasOwnProperty("nextbid_login");
+    let extra = "";
+
+    if (hasLogin && liData.hasOwnProperty("available")) {
+        let userType = JSON.parse(localStorage.getItem("nextbid_login")).type;
+        available = hasLogin && userType === liData.available || "all" === liData.available;
+
+        if (liData.url === "user-register.html") {
+            available = false;
+        }
+
+        if (liData.url === "user-login.html") {
+            extra = (userType === "customer") ? "Selling" : "Buying";
+        }
+
+        console.log('Available : ', userType, available);
+    } else {
+        available = "customer" === liData.available || "all" === liData.available;
+        console.log('Available : ', "default :", liData.available, available);
     }
+
     liClass = available ? liClass + "" : liClass + " d-none";
 
     let url = liData.hasOwnProperty("callback") ? 'javascript:' + liData.callback + '' : liData.url;
 
     return `<li class="${liClass} ${!(liData.type === "sub-menu-item") ? "nav-item m-sm-1 m-md-1 m-lg-3" : ""}">
-                <a class="${classes}" aria-current="page" href="${url}">${liData.title}</a>
+                <a class="${classes}" aria-current="page" href="${url}">${liData.title} ${extra}</a>
             </li>`;
 }
 
 function getInnerSubMenu(subMenuData) {
-    let subMenuHeader = `<li class="nav-item dropdown m-sm-1 m-md-1 m-lg-3">
+    let userName = "";
+    let subMenuTitle = "";
+    if (localStorage.hasOwnProperty("nextbid_login")) {
+        userName = JSON.parse(localStorage.getItem("nextbid_login")).username;
+    } else {
+        userName = subMenuData.title;
+    }
+
+    console.log('submenu :', subMenuData.auth)
+    let subMenuHeader = `<li class="nav-item dropdown m-sm-1 m-md-1 m-lg-3 ${subMenuData.auth ? '' : ' d-none'}">
                         <a class="nav-link dropdown-toggle" href="${subMenuData.url}" id="navbarDropdown" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
-                            ${subMenuData.title}
+                            ${userName}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">`;
     let subMenuFooter = `</ul>
@@ -49,11 +76,9 @@ $(document).ready(function () {
             if (!response.ok) {
                 throw new Error()
             }
-            console.log(response);
             return response.json();
         })
         .then(json => {
-            console.log(json)
             json['menu_items'].forEach((element, index) => {
                 if (element.sub_menu) {
                     headerEle.append(getInnerSubMenu(element));
@@ -63,7 +88,6 @@ $(document).ready(function () {
             });
         })
         .catch(reason => {
-            console.log(reason)
             Toast.fire({
                 icon: 'error',
                 title: 'Something went wrong! Please try again.'
