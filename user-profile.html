@@ -48,8 +48,10 @@
                     <div class="d-flex flex-row align-items-center">
                         <h6 class="mb-0">Your Details</h6>
 
-                        <button class="btn btn-dark btn-sm ms-auto">
-                            Edit
+                        <button aria-controls="collapseEditProfile" aria-expanded="true"
+                                class="btn btn-dark btn-sm ms-auto" data-bs-target="#collapseEditProfile"
+                                data-bs-toggle="collapse"
+                                type="button"> Edit
                         </button>
                     </div>
                     <hr>
@@ -72,27 +74,80 @@
                         </div>
                     </div>
 
-                    <div class="card border-0 bg-light mt-5">
+                    <div class="card border-0 bg-light mt-5 collapse" id="collapseEditProfile">
                         <div class="card-body">
                             <div class="d-flex flex-row align-items-center mb-4">
-                                <h5 class="text-primary-dark mb-0">Edit Profile</h5>
+                                <h5 class="text-primary-dark mb-0"
+                                >Edit Profile</h5>
 
-                                <button class="btn btn-light btn-sm ms-auto">
+                                <button aria-controls="collapseEditProfile" aria-expanded="true"
+                                        class="btn btn-light btn-sm ms-auto" data-bs-target="#collapseEditProfile"
+                                        data-bs-toggle="collapse"
+                                        type="button">
                                     <i class="fas fa-times"></i>
                                 </button>
                             </div>
 
 
-                            <form action="">
-                                <div class="mb-3">
-                                    <label class="form-label" for="fullNameInput">Full Name</label>
-                                    <input class="form-control border-0" id="fullNameInput"
-                                           type="email" value="Customer Name">
+                            <form action="" class="row needs-validation" id="editProfileForm" novalidate>
+                                <div class="col-md-6 col-lg-6 col-sm-12 mb-3">
+                                    <label class="form-label" for="firstNameInput">First Name</label>
+                                    <input class="form-control border-0" id="firstNameInput"
+                                           maxlength="100" minlength="2" name="first_name" pattern="^[a-zA-Z ]*$"
+                                           placeholder="Enter first name"
+                                           required type="text">
+                                    <div class="invalid-feedback">
+                                        Please enter valid first name!.
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="telephoneNumber">Telephone Number</label>
-                                    <input class="form-control border-0" id="telephoneNumber"
-                                           type="tel" value="0771234567">
+                                <div class="col-md-6 col-lg-6 col-sm-12 mb-3">
+                                    <label class="form-label" for="lastNameInput">Last Name</label>
+                                    <input class="form-control border-0 input-group-appended"
+                                           id="lastNameInput" maxlength="100" minlength="2" name="last_name"
+                                           oninput="" pattern="^[a-zA-Z ]*$" placeholder="Enter last name" required
+                                           type="text">
+                                    <div class="invalid-feedback">
+                                        Please enter valid last name!.
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-lg-6 col-sm-12 mb-3">
+                                    <label class="form-label" for="dateOfBirthInput">Date of Birth</label>
+                                    <input class="form-control border-0" id="dateOfBirthInput" name="dob"
+                                           placeholder="Enter date of birth" required type="date">
+                                    <div class="invalid-feedback">
+                                        Please enter valid date of birth!.
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-lg-12 col-sm-12 mb-3">
+                                    <label class="form-label" for="addressInput">Address</label>
+                                    <textarea class="form-control border-0" id="addressInput" name="address"
+                                              placeholder="Enter address here" required rows="3"
+                                              type="text"></textarea>
+                                    <div class="invalid-feedback">
+                                        Please enter valid address!.
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-lg-6 col-sm-12 mb-3">
+                                    <label class="form-label" for="cityInput">City</label>
+                                    <input class="form-control border-0" id="cityInput" name="city"
+                                           pattern="^[a-zA-Z ]*$" placeholder="Enter city" required type="text">
+                                    <div class="invalid-feedback">
+                                        Please enter valid city!.
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-lg-12 col-sm-12 mb-3">
+                                    <label class="form-label" for="telephoneNumberInput">Telephone Number</label>
+                                    <input class="form-control border-0" id="telephoneNumberInput"
+                                           maxlength="10"
+                                           minlength="10" name="telephone" placeholder="Enter telephone number" required
+                                           type="tel">
+                                    <div class="invalid-feedback">
+                                        Please enter valid telephone number!.
+                                    </div>
                                 </div>
 
                                 <div class="row justify-content-center">
@@ -109,7 +164,10 @@
                     <div class="d-flex flex-row align-items-center">
                         <h6 class="mb-0">Account Details</h6>
 
-                        <button class="btn btn-dark btn-sm ms-auto">
+                        <button aria-controls="collapseCredentials" aria-expanded="true"
+                                class="btn btn-dark btn-sm ms-auto"
+                                data-bs-target="#collapseCredentials" data-bs-toggle="collapse"
+                                type="button">
                             Edit Credentials
                         </button>
                     </div>
@@ -124,31 +182,40 @@
                         </div>
                     </div>
 
-                    <div class="card border-0 bg-light mt-5">
+                    <div class="card border-0 bg-light mt-5 collapse" id="collapseCredentials">
                         <div class="card-body">
                             <div class="d-flex flex-row align-items-center mb-4">
                                 <h5 class="text-primary-dark mb-0">Edit Credentials</h5>
 
-                                <button class="btn btn-light btn-sm ms-auto">
+                                <button aria-controls="collapseCredentials" aria-expanded="true"
+                                        class="btn btn-light btn-sm ms-auto"
+                                        data-bs-target="#collapseCredentials" data-bs-toggle="collapse"
+                                        type="button">
                                     <i class="fas fa-times"></i>
                                 </button>
                             </div>
 
-                            <form action="">
-                                <div class="mb-3">
+                            <form action="" class="row needs-validation" id="editCredentialsForm" novalidate>
+                                <div class="col-md-12 mb-3">
                                     <label class="form-label" for="exampleInputEmail1">Email address</label>
                                     <input class="form-control border-0" disabled id="exampleInputEmail1"
-                                           type="email" value="jhonedoe@gmail.com">
+                                           required type="email" value="jhonedoe@gmail.com">
                                 </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="exampleInputPassword1">Password</label>
-                                    <input class="form-control border-0" id="exampleInputPassword1"
-                                           type="password">
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label" for="passwordInput">Password</label>
+                                    <input class="form-control border-0" id="passwordInput"
+                                           oninput="confirmPassword('password')" required type="password">
+                                    <div class="invalid-feedback">
+                                        Passwords are not matching!
+                                    </div>
                                 </div>
-                                <div class="mb-3">
+                                <div class="col-md-12 mb-3">
                                     <label class="form-label" for="reEnterPassword">Re enter Password</label>
                                     <input class="form-control border-0" id="reEnterPassword"
-                                           type="password">
+                                           oninput="confirmPassword('reEnterPassword')" required type="password">
+                                    <div class="invalid-feedback">
+                                        Passwords are not matching!
+                                    </div>
                                 </div>
 
                                 <div class="row justify-content-center">
@@ -161,8 +228,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </section>
 </main>
@@ -249,6 +314,8 @@
 <script src="js/controller/header-controller.js" type="module"></script>
 
 <script src="js/controller/auth-controller.js"></script>
+
+<script src="js/controller/user-profile-controller.js"></script>
 
 </body>
 </html>
