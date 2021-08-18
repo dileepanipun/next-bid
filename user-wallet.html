@@ -199,7 +199,9 @@
                     <div class="d-flex flex-row align-items-center">
                         <h6 class="mb-0">Card Info</h6>
 
-                        <button class="btn btn-dark btn-sm ms-auto">
+                        <button aria-controls="addCardCollapse" aria-expanded="true"
+                                class="btn btn-dark btn-sm ms-auto" data-bs-target="#addCardCollapse`"
+                                data-bs-toggle="collapse" type="button">
                             Add Card
                         </button>
                     </div>
@@ -211,39 +213,57 @@
                         </div>
                     </div>
 
-                    <div class="card border-0 bg-light mt-3">
+                    <div class="card border-0 bg-light mt-3 collapse" id="addCardCollapse">
                         <div class="card-body">
                             <div class="d-flex flex-row align-items-center mb-4">
                                 <h5 class="text-primary-dark mb-0">Card Credentials</h5>
 
-                                <button class="btn btn-light btn-sm ms-auto">
+                                <button aria-controls="addCardCollapse" aria-expanded="true"
+                                        class="btn btn-light btn-sm ms-auto" data-bs-target="#addCardCollapse"
+                                        data-bs-toggle="collapse" type="button">
                                     <i class="fas fa-times"></i>
                                 </button>
                             </div>
-                            <form action="" class="row">
+                            <form action="" class="row needs-validation" id="addCardForm" novalidate>
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputEmail1">Account Name</label>
                                     <input class="form-control border-0" id="exampleInputEmail1"
-                                           type="email" value="jhonedoe@gmail.com">
+                                           pattern="^[a-zA-Z ]*$" required type="text" value="jhonedoe@gmail.com">
+                                    <div class="invalid-feedback">
+                                        Please enter valid account name!
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="bankName">Bank Name</label>
                                     <input class="form-control border-0" id="bankName"
-                                           type="email">
+                                           pattern="^[a-zA-Z ]*$" required type="text">
+                                    <div class="invalid-feedback">
+                                        Please enter valid bank name!
+                                    </div>
+                                </div>
+
+                                <label class="form-label" for="exp-year">Expired Date</label>
+                                <div class="mb-3 col-md-6 col-lg-6">
+                                    <input class="form-control border-0 input-group-appended" id="exp-month"
+                                           maxlength="2" minlength="2" placeholder="month" required type="text">
+                                    <div class="invalid-feedback">
+                                        Please enter valid month number!
+                                    </div>
                                 </div>
                                 <div class="mb-3 col-md-6 col-lg-6">
-                                    <label class="form-label" for="exp-year">Expired Date</label>
-                                    <div class="input-group">
-                                        <input class="form-control border-0" id="exp-year"
-                                               placeholder="year" type="password">
-                                        <input class="form-control border-0 input-group-appended" id="exp-month"
-                                               placeholder="month" type="password">
+                                    <input class="form-control border-0" id="exp-year"
+                                           maxlength="4" minlength="4" placeholder="year" required type="text">
+                                    <div class="invalid-feedback">
+                                        Please enter valid year number!
                                     </div>
                                 </div>
                                 <div class="mb-3 col-md-6 col-lg-6">
                                     <label class="form-label" for="cvs">CVS</label>
                                     <input class="form-control border-0" id="cvs"
-                                           placeholder="CVS" type="password">
+                                           maxlength="3" minlength="3" placeholder="CVS" required type="text">
+                                    <div class="invalid-feedback">
+                                        Please enter valid CSV!
+                                    </div>
                                 </div>
 
                                 <div class="row justify-content-center">
@@ -344,6 +364,8 @@
 <script src="js/controller/header-controller.js" type="module"></script>
 
 <script src="js/controller/auth-controller.js"></script>
+
+<script src="js/controller/user-wallet-controller.js"></script>
 
 </body>
 </html>
