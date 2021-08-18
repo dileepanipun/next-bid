@@ -49,25 +49,35 @@
 
                             <p class="mb-5 fw-normal">Use your account details to login and continue your bidding.</p>
 
-                            <form id="loginForm">
-                                <div class="mb-3">
+                            <form class="row needs-validation" id="loginForm" novalidate>
+                                <div class="col-md-12 col-lg-12 col-sm-12 mb-3">
                                     <label class="form-label" for="exampleInputEmail1">Email address</label>
                                     <input aria-describedby="emailHelp" class="form-control border-0 bg-light"
-                                           id="exampleInputEmail1"
-                                           name="username" type="email">
-                                    <div class="form-text" id="emailHelp">We'll never share your email with anyone
-                                        else.
+                                           id="exampleInputEmail1" name="username" placeholder="Enter email address"
+                                           required
+                                           type="email">
+                                    <div class="invalid-feedback">
+                                        Please input valid email address!
+                                    </div>
+                                    <div class="text-muted" id="emailHelp">
+                                        We'll never share your email with anyone else.
                                     </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="exampleInputPassword1">Password</label>
-                                    <input class="form-control border-0 bg-light" id="exampleInputPassword1"
-                                           name="password" type="password">
+                                <div class="col-md-12 col-lg-12 col-sm-12 mb-3">
+                                    <label class="form-label" for="passwordInput">Password</label>
+                                    <input class="form-control border-0 bg-light" id="passwordInput" maxlength="10"
+                                           minlength="4"
+                                           name="password" placeholder="Enter password here" required type="password">
+                                    <div class="invalid-feedback">
+                                        Please input valid password!
+                                    </div>
                                 </div>
-                                <div class="mb-3 form-check">
-                                    <input class="form-check-input" id="exampleCheck1" name="remember_me"
-                                           type="checkbox">
-                                    <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+                                <div class="col-md-12 col-lg-12 col-sm-12 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" id="exampleCheck1" name="remember_me"
+                                               type="checkbox">
+                                        <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+                                    </div>
                                 </div>
 
                                 <div class="row justify-content-center">
@@ -177,7 +187,7 @@
 
 <script src="js/controller/auth-controller.js"></script>
 
-<script src="js/controller/user-controller.js"></script>
+<script src="js/controller/user-login-controller.js"></script>
 
 </body>
 </html>
