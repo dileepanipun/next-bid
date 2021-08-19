@@ -6,11 +6,15 @@ function loginUser() {
     localStorage.setItem("nextbid_login", JSON.stringify({
         "username": userName,
         "password": password,
-        "type": "customer",
+        "userType": "customer",
         "remember_me": remember_me,
     }));
 
-    checkLogins();
+    if (localStorage.hasOwnProperty("nextbid_login") && userName === "admin@gmail.com" && password === "admin") {
+        window.location.href = baseUrl + 'admin-dashboard.html';
+    } else if (localStorage.hasOwnProperty("nextbid_login") && userName !== undefined && password !== undefined) {
+        window.location.href = baseUrl + 'index.html';
+    }
 }
 
 $('#loginForm').on('submit', e => {
