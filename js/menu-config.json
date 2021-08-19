@@ -38,15 +38,8 @@
           "title": "Profile",
           "url": "user-profile.html",
           "type": "sub-menu-item",
-          "available": "customer",
-          "auth": true
-        },
-        {
-          "title": "Seller Profile",
-          "url": "seller-profile.html",
-          "type": "sub-menu-item",
-          "available": "seller",
-          "auth": true
+          "available": "all",
+          "auth": false
         },
         {
           "title": "Wallet",

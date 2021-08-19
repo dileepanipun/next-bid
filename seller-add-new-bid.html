@@ -48,7 +48,7 @@
                 <div class="col-md-6 col-lg-8 col-sm-12">
                     <form class="row needs-validation" id="createNewBidForm" novalidate>
                         <div class="col-md-12 mb-3">
-                            <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidTitleInput">
+                            <label class="form-label" for="bidTitleInput">
                                 Bid Title
                             </label>
                             <input class="form-control border-0 bg-light" id="bidTitleInput"
@@ -56,12 +56,12 @@
                                    placeholder="Enter bid title here" required
                                    type="text">
                             <div class="invalid-feedback">
-                                Please enter valid bid description!
+                                Please enter valid bid title!
                             </div>
                         </div>
 
                         <div class="col-md-12 mb-3">
-                            <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidDescriptionInput">
+                            <label class="form-label" for="bidDescriptionInput">
                                 Bid Description
                             </label>
                             <textarea class="form-control border-0 bg-light" id="bidDescriptionInput"
@@ -72,7 +72,35 @@
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidTitleInput">
+                            <label class="form-label" for="bidProductInput">
+                                Select product for bid
+                            </label>
+                            <select class="form-control border-0 bg-light" id="bidProductInput"
+                                    onkeyup="updateCardTitle(this)" required type="select">
+                                <option value="">Select product here</option>
+                                <option value="product_01">Product 01</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a product!
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label" for="bidCategoryInput">
+                                Select bid category
+                            </label>
+                            <select class="form-control border-0 bg-light" id="bidCategoryInput"
+                                    onkeyup="updateCardTitle(this)" required type="select">
+                                <option value="">Select bid category here</option>
+                                <option value="product_01">Category 01</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select a category!
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label" for="bidTitleInput">
                                 Starts In
                             </label>
                             <input class="form-control border-0 bg-light" id="bidStartsDateTime" required
@@ -83,7 +111,7 @@
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidTitleInput">
+                            <label class="form-label" for="bidTitleInput">
                                 Ends In
                             </label>
                             <div class="input-group col-lg col-md col-sm-12">
@@ -97,7 +125,7 @@
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidImageInput">
+                            <label class="form-label" for="bidImageInput">
                                 Select Bid Image
                             </label>
                             <input accept="image/png" class="form-control border-0 bg-light" id="bidImageInput"
@@ -109,7 +137,7 @@
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidImageInput">
+                            <label class="form-label" for="bidImageInput">
                                 Set start point
                             </label>
                             <input class="form-control border-0 bg-light" id="bidStartFrom"

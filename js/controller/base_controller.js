@@ -38,14 +38,7 @@ let menu = {
                     "title": "Profile",
                     "url": "user-profile.html",
                     "type": "sub-menu-item",
-                    "available": "customer",
-                    "auth": true
-                },
-                {
-                    "title": "Seller Profile",
-                    "url": "seller-profile.html",
-                    "type": "sub-menu-item",
-                    "available": "seller",
+                    "available": "all",
                     "auth": true
                 },
                 {
