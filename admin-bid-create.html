@@ -9,10 +9,15 @@
     <title>N E X T Bid - Create Bid</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet"/>
     <link href="admin-assets/css/styles.css" rel="stylesheet"/>
-    <script crossorigin="anonymous"
-            src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
+    <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+          integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+          referrerpolicy="no-referrer" rel="stylesheet"/>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <link href="admin-assets/css/override-styles.css" rel="stylesheet">
+    <link href="css/app-styles.css" rel="stylesheet">
 </head>
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -21,8 +26,9 @@
         <span class="fw-bold">N E <span class="text-primary">X</span> T</span> BID
     </a>
     <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" href="#!" id="sidebarToggle"><i
-            class="fas fa-bars"></i></button>
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" href="#!" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+    </button>
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-lg-auto ms-md-0 me-3 me-lg-4">
         <li class="nav-item dropdown">
@@ -46,24 +52,30 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Core</div>
-                    <a class="nav-link" href="admin-dashboard.html">
+                    <a class="nav-link" href="admin-dashboard.html" id="menuItemDashboard">
                         <div class="sb-nav-link-icon"><i class="fas fa-th-large"></i></div>
                         Dashboard
                     </a>
 
 
                     <div class="sb-sidenav-menu-heading">Bids</div>
-                    <a class="nav-link" href="admin-bid-create.html">
+                    <a class="nav-link" href="admin-bid-create.html" id="menuItemBidCreate">
                         <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
                         Create Bid
                     </a>
-                    <a class="nav-link" href="admin-bid-all.html">
+                    <a class="nav-link" href="admin-bid-all.html" id="menuItemBidAll">
+                        <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                        View All
+                    </a>
+
+                    <div class="sb-sidenav-menu-heading">Category</div>
+                    <a class="nav-link" href="admin-category-all.html" id="menuItemCategoryAll">
                         <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                         View All
                     </a>
 
                     <div class="sb-sidenav-menu-heading">Customer</div>
-                    <a class="nav-link" href="admin-customer-list.html">
+                    <a class="nav-link" href="admin-customer-list.html" id="menuItemCustomerAll">
                         <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                         View All
                     </a>
@@ -80,49 +92,111 @@
 
                 <div class="row">
                     <div class="col-md-6 col-lg-8 col-sm-12">
-                        <form>
-                            <div class="form-group row mb-3">
-                                <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidTitleInput">Bid
-                                    Title</label>
-                                <div class="col-lg col-md col-sm-12">
-                                    <input class="form-control border-0 bg-light" id="bidTitleInput" type="text">
+                        <form class="row needs-validation" id="createNewBidForm" novalidate>
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label" for="bidTitleInput">
+                                    Bid Title
+                                </label>
+                                <input class="form-control border-0 bg-light" id="bidTitleInput"
+                                       onkeyup="updateCardTitle(this)" pattern="^[a-zA-Z ]*$"
+                                       placeholder="Enter bid title here" required
+                                       type="text">
+                                <div class="invalid-feedback">
+                                    Please enter valid bid title!
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-3">
-                                <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidDescriptionInput">Bid
-                                    Description</label>
-                                <div class="col-lg col-md col-sm-12">
-                                    <textarea class="form-control border-0 bg-light" id="bidDescriptionInput"
-                                              rows="3" type="text"></textarea>
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label" for="bidDescriptionInput">
+                                    Bid Description
+                                </label>
+                                <textarea class="form-control border-0 bg-light" id="bidDescriptionInput"
+                                          placeholder="Enter description" required rows="3" type="text"></textarea>
+                                <div class="invalid-feedback">
+                                    Please enter valid bid description!
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-3">
-                                <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidTitleInput">Starts
-                                    In</label>
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label" for="bidProductInput">
+                                    Select product for bid
+                                </label>
+                                <select class="form-control border-0 bg-light" id="bidProductInput"
+                                        onkeyup="updateCardTitle(this)" required type="select">
+                                    <option value="">Select product here</option>
+                                    <option value="product_01">Product 01</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a product!
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label" for="bidCategoryInput">
+                                    Select bid category
+                                </label>
+                                <div class="input-group">
+                                    <select class="form-control border-0 bg-light" id="bidCategoryInput"
+                                            onkeyup="updateCardTitle(this)" required type="select">
+                                        <option value="">Select bid category here</option>
+                                        <option value="product_01">Category 01</option>
+                                    </select>
+                                    <button class="btn btn-dark input-group-appended"
+                                            data-bs-target="#add-category-modal"
+                                            data-bs-toggle="modal" type="button">Add Category
+                                    </button>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please select a category!
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label" for="bidTitleInput">
+                                    Starts In
+                                </label>
+                                <input class="form-control border-0 bg-light" id="bidStartsDateTime" required
+                                       type="datetime-local">
+                                <div class="invalid-feedback">
+                                    Please enter valid starts in date time!
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label" for="bidTitleInput">
+                                    Ends In
+                                </label>
                                 <div class="input-group col-lg col-md col-sm-12">
-                                    <input class="form-control border-0 bg-light" id="bidStartsDate" type="date">
-                                    <input class="form-control border-0 bg-light input-group-append" id="bidStartsTime"
-                                           type="time">
+                                    <input class="form-control border-0 bg-light" id="bidEndsDate"
+                                           onchange="updateEndsIn(this)"
+                                           required type="datetime-local">
+                                    <div class="invalid-feedback">
+                                        Please enter valid ends in date time!
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-3">
-                                <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidTitleInput">Ends
-                                    In</label>
-                                <div class="input-group col-lg col-md col-sm-12">
-                                    <input class="form-control border-0 bg-light" id="bidEndsDate" type="date">
-                                    <input class="form-control border-0 bg-light input-group-append" id="bidEndsTime"
-                                           type="time">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label" for="bidImageInput">
+                                    Select Bid Image
+                                </label>
+                                <input accept="image/png" class="form-control border-0 bg-light" id="bidImageInput"
+                                       onchange="updateImagePreview(event)"
+                                       required type="file">
+                                <div class="invalid-feedback">
+                                    Please enter valid start date time!
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-3">
-                                <label class="form-label col-lg-4 col-md-6 col-sm-12" for="bidTitleInput">Bid Start
-                                    From</label>
-                                <div class="col-lg col-md col-sm-12">
-                                    <input class="form-control border-0 bg-light" id="bidStartFromInput" type="number">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label" for="bidImageInput">
+                                    Set start point
+                                </label>
+                                <input class="form-control border-0 bg-light" id="bidStartFrom"
+                                       onkeyup="updateStartFrom(this)" placeholder="Enter starts value"
+                                       required type="number">
+                                <div class="invalid-feedback">
+                                    Please enter valid start date time!
                                 </div>
                             </div>
 
@@ -145,19 +219,18 @@
                                 <div class="d-flex flex-row justify-content-between mb-3">
                                     <div>
                                         <p class="mb-0">Ends In</p>
-                                        <p class="mb-0 fw-bold">08/05 - 21h 23m 03s</p>
+                                        <p class="mb-0 fw-bold" id="bidEndsDatePreview">08/05 - 21h 23m 03s</p>
                                     </div>
                                     <div class="text-end">
-                                        <p class="mb-0">Highest Bid</p>
-                                        <p class="mb-0 fw-bold">550.00 LKR</p>
+                                        <p class="mb-0">Starts from</p>
+                                        <p class="mb-0 fw-bold" id="bidStartFromPreview">0.00 LKR</p>
                                     </div>
                                 </div>
 
-                                <img alt="bid-image" src="https://via.placeholder.com/300"
+                                <img alt="bid-image" id="bidImageInputPreview" src="https://via.placeholder.com/300"
                                      style="width: 100%;height: 300px;border-radius: 10px;object-fit: cover;object-position: center;">
 
-                                <h5 class="text-center my-3 fw-bold">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                    elit.</h5>
+                                <h5 class="text-center my-3 fw-bold" id="bidTitleInputPreview">Title goes here</h5>
 
                                 <a class="btn btn-primary fw-bold w-100 py-3 border-0" href="user-bid-detail.html"
                                    style="border-radius: 10px;">
@@ -168,6 +241,39 @@
                     </div>
                 </div>
 
+                <!-- Modal -->
+                <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="add-category-modal"
+                     tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add new category</h5>
+                                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal"
+                                        type="button"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" class="row needs-validation w-100" id="newCategoryAddForm" novalidate>
+                                    <div class="col-md-12 mb-3">
+                                        <label class="form-label" for="newCategoryInput">Category Name : </label>
+                                        <input class="form-control" id="newCategoryInput" maxlength="100" minlength="2"
+                                               name="" pattern="^[a-zA-Z]*$"
+                                               required type="text">
+                                        <div class="invalid-feedback">
+                                            Enter valid category name!
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="text-center">
+                                            <button class="btn btn-primary my-auto border-0" type="submit">Save
+                                                changes
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
         <footer class="py-4 bg-light mt-auto">
@@ -184,13 +290,21 @@
         </footer>
     </div>
 </div>
+
+<script crossorigin="anonymous"
+        integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg=="
+        referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script crossorigin="anonymous"
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="admin-assets/js/scripts.js"></script>
 <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-<script src="admin-assets/assets/demo/chart-area-demo.js"></script>
-<script src="admin-assets/assets/demo/chart-bar-demo.js"></script>
 <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"></script>
 <script src="admin-assets/js/datatables-simple-demo.js"></script>
+
+<script src="js/controller/base_controller.js"></script>
+<script src="js/controller/admin-auth-controller.js"></script>
+<script src="js/controller/admin-left-navigation-controller.js"></script>
+
+<script src="js/controller/admin-bid-create-controller.js"></script>
 </body>
 </html>

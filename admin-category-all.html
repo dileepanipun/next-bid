@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
     <meta content="" name="description"/>
     <meta content="" name="author"/>
-    <title>N E X T Bid - Bids List</title>
+    <title>N E X T Bid - Manage Categories</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet"/>
     <link href="admin-assets/css/styles.css" rel="stylesheet"/>
 
@@ -87,28 +87,52 @@
         <main>
             <div class="container-fluid px-4">
 
-                <h4 class="mt-4">View All Bids</h4>
+                <h4 class="mt-4">Manage Categories</h4>
                 <hr>
 
-                <table class="table table-hover table-responsive-md table-responsive-sm">
+                <h5 class="mt-4">Add New Category</h5>
+                <form class="row needs-validation" novalidate>
+                    <div class="form-group row mb-3">
+                        <label class="form-label col-lg-4 col-md-6 col-sm-12" for="categoryNameInput">
+                            Category Name
+                        </label>
+                        <div class="col-lg col-md col-sm-12">
+                            <input class="form-control border-0 bg-light" id="categoryNameInput" maxlength="100"
+                                   minlength="2"
+                                   pattern="^[a-zA-Z]*$" required type="text">
+                            <div class="invalid-feedback">
+                                Please input valid category name!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 col-sm-12 offset-lg-4 offset-md-0 offset-sm-0 ">
+                            <button class="btn btn-dark border-0 me-3 px-5" style="width: fit-content;"
+                                    type="submit">Save
+                            </button>
+                            <button class="btn btn-light px-5" style="width: fit-content;" type="submit">Clear
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <h5 class="mt-4">Categories List</h5>
+                <table class="table table-hover table-responsive-md table-responsive-sm" id="categoryListTable">
                     <thead>
                     <tr>
-                        <th scope="col">Bid ID</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Duration</th>
-                        <th scope="col">Start From</th>
+                        <th scope="col">Category ID</th>
+                        <th scope="col">Category Name</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <th class="fw-normal" scope="row">BD1231</th>
-                        <td class="fw-bold">Lorem ipsum dolor sit amet, consectetur</td>
-                        <td> 2hr 23min 00s <span class="badge border-0 bg-black  text-uppercase">Closed</span></td>
-                        <td><h4>230.00 <span style="font-size: 12px">LKR</span></h4></td>
+                        <th class="fw-normal" scope="row">CD1231</th>
+                        <td class="fw-bold">Electronic Devices</td>
                         <td>
-                            <a class="btn btn-sm btn-dark border-0 me-1" href="admin-bid-view.html">
-                                View
+                            <a class="btn btn-sm btn-dark border-0 me-1" href="">
+                                Edit
                             </a>
                             <button class="btn btn-sm btn-danger border-0">
                                 <span class="fa fa-trash"></span>
@@ -116,56 +140,84 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="fw-normal" scope="row">BD1231</th>
-                        <td class="fw-bold">Lorem dolor sit amet, consectetur adipisicing</td>
-                        <td> 2hr 23min 00s <span class="badge border-0 bg-success text-uppercase">Ongoing</span></td>
-                        <td><h4>230.00 <span style="font-size: 12px">LKR</span></h4></td>
+                        <th class="fw-normal" scope="row">CD1231</th>
+                        <td class="fw-bold">Electronic Devices</td>
                         <td>
-                            <button class="btn btn-sm btn-dark border-0 me-1">
-                                View
-                            </button>
+                            <a class="btn btn-sm btn-dark border-0 me-1" href="">
+                                Edit
+                            </a>
                             <button class="btn btn-sm btn-danger border-0">
                                 <span class="fa fa-trash"></span>
                             </button>
                         </td>
                     </tr>
                     <tr>
-                        <th class="fw-normal" scope="row">BD1231</th>
-                        <td class="fw-bold">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                        <td> 2hr 23min 00s <span class="badge border-0 bg-success text-uppercase">Ongoing</span></td>
-                        <td><h4>230.00 <span style="font-size: 12px">LKR</span></h4></td>
+                        <th class="fw-normal" scope="row">CD1231</th>
+                        <td class="fw-bold">Electronic Devices</td>
                         <td>
-                            <button class="btn btn-sm btn-dark border-0 me-1">
-                                View
-                            </button>
+                            <a class="btn btn-sm btn-dark border-0 me-1" href="">
+                                Edit
+                            </a>
                             <button class="btn btn-sm btn-danger border-0">
                                 <span class="fa fa-trash"></span>
                             </button>
                         </td>
                     </tr>
                     <tr>
-                        <th class="fw-normal" scope="row">BD1231</th>
-                        <td class="fw-bold">Lorem ipsum dolor sit amet, consectetur adipisicing</td>
-                        <td> 2hr 23min 00s <span class="badge border-0 bg-secondary text-uppercase">Pending</span></td>
-                        <td><h4>230.00 <span style="font-size: 12px">LKR</span></h4></td>
+                        <th class="fw-normal" scope="row">CD1231</th>
+                        <td class="fw-bold">Electronic Devices</td>
                         <td>
-                            <button class="btn btn-sm btn-dark border-0 me-1">
-                                View
-                            </button>
+                            <a class="btn btn-sm btn-dark border-0 me-1" href="">
+                                Edit
+                            </a>
                             <button class="btn btn-sm btn-danger border-0">
                                 <span class="fa fa-trash"></span>
                             </button>
                         </td>
                     </tr>
                     <tr>
-                        <th class="fw-normal" scope="row">BD1231</th>
-                        <td class="fw-bold">Lorem ipsum dolor sit amet,</td>
-                        <td> 2hr 23min 00s <span class="badge border-0 bg-secondary text-uppercase">Pending</span></td>
-                        <td><h4>230.00 <span style="font-size: 12px">LKR</span></h4></td>
+                        <th class="fw-normal" scope="row">CD1231</th>
+                        <td class="fw-bold">Electronic Devices</td>
                         <td>
-                            <button class="btn btn-sm btn-dark border-0 me-1">
-                                View
+                            <a class="btn btn-sm btn-dark border-0 me-1" href="">
+                                Edit
+                            </a>
+                            <button class="btn btn-sm btn-danger border-0">
+                                <span class="fa fa-trash"></span>
                             </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="fw-normal" scope="row">CD1231</th>
+                        <td class="fw-bold">Electronic Devices</td>
+                        <td>
+                            <a class="btn btn-sm btn-dark border-0 me-1" href="">
+                                Edit
+                            </a>
+                            <button class="btn btn-sm btn-danger border-0">
+                                <span class="fa fa-trash"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="fw-normal" scope="row">CD1231</th>
+                        <td class="fw-bold">Electronic Devices</td>
+                        <td>
+                            <a class="btn btn-sm btn-dark border-0 me-1" href="">
+                                Edit
+                            </a>
+                            <button class="btn btn-sm btn-danger border-0">
+                                <span class="fa fa-trash"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="fw-normal" scope="row">CD1231</th>
+                        <td class="fw-bold">Electronic Devices</td>
+                        <td>
+                            <a class="btn btn-sm btn-dark border-0 me-1" href="">
+                                Edit
+                            </a>
                             <button class="btn btn-sm btn-danger border-0">
                                 <span class="fa fa-trash"></span>
                             </button>
@@ -173,7 +225,6 @@
                     </tr>
                     </tbody>
                 </table>
-
             </div>
         </main>
         <footer class="py-4 bg-light mt-auto">
@@ -204,5 +255,14 @@
 <script src="js/controller/base_controller.js"></script>
 <script src="js/controller/admin-auth-controller.js"></script>
 <script src="js/controller/admin-left-navigation-controller.js"></script>
+
+<script>
+    $(document).ready(function () {
+        const datatablesSimple = document.getElementById('categoryListTable');
+        if (datatablesSimple) {
+            new simpleDatatables.DataTable(datatablesSimple);
+        }
+    });
+</script>
 </body>
 </html>
