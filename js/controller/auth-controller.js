@@ -8,6 +8,7 @@ function showMenu(status) {
         $('#menuItemWallet').parent().show();
         $('#menuItemCustomerBiddingList').parent().show();
         $('#menuItemSwitchUserType').parent().show();
+        $('#menuItemSwitchUserType').html('Switch to  Selling');
         console.log($('#menuItemSwitchUserType').parent());
         $('#menuItemNewBid').parent().hide();
         $('#menuItemSellerOngoingBids').parent().hide();
@@ -18,6 +19,7 @@ function showMenu(status) {
         $('#menuItemLogout').parent().show();
         $('#menuItemProfile').parent().show();
         $('#menuItemSwitchUserType').parent().show();
+        $('#menuItemSwitchUserType').html('Switch to  Buying');
         $('#menuItemWallet').parent().hide();
         $('#menuItemCustomerBiddingList').parent().hide();
         $('#menuItemNewBid').parent().show();
@@ -34,6 +36,7 @@ function showMenu(status) {
         $('#menuItemSellerOngoingBids').parent().hide();
         $('#menuItemSellerBidsHistory').parent().hide();
         $('#menuItemSwitchUserType').parent().hide();
+        $('#menuItemSwitchUserType').html('Switch to  Selling');
     }
 }
 
@@ -55,7 +58,13 @@ function checkLogins() {
     }
 
     if (window.location.href !== baseUrl + 'user-login.html') {
-        window.location.href = baseUrl + 'user-login.html';
+        if (window.location.href === baseUrl + 'user-register.html') {
+            if (!(window.location.href === baseUrl + 'user-register.html')) {
+                window.location.href = baseUrl + 'user-register.html';
+            }
+        } else {
+            window.location.href = baseUrl + 'user-login.html';
+        }
     }
     showMenu(undefined);
 }

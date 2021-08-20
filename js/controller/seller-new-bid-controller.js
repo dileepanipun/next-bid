@@ -19,13 +19,49 @@ function updateImagePreview(event) {
 }
 
 
+function saveNewBid() {
+    $.ajax({
+        enctype: 'multipart/form-data',
+        type: 'POST',
+        url: baseUrl + "/api/v1/",
+        processData: false,
+        contentType: false,
+        dataType: "JSON",
+        data: new FormData($('#newCategoryInput')[0]),
+        async: true,
+        beforeSend: function () {
+            // show loading
+
+        },
+        complete: function () {
+            // hide loading
+
+        },
+        success: function (response) {
+            // handle success
+            if (response.status === 200) {
+                Toast.fire({
+                    icon: 'success',
+                    title: 'User successfully registered!'
+                })
+            }
+        },
+        error: function (response) {
+            // handle error
+            Toast.fire({
+                icon: 'error',
+                title: 'Request failed! cannot preform this action!'
+            })
+        }
+    });
+}
+
 $('#createNewBidForm').on('submit', e => {
     e.preventDefault();
     e.stopPropagation();
     if (document.querySelector('#createNewBidForm').checkValidity()) {
-
         // save bid
-
+        saveNewBid();
     } else {
         Toast.fire({
             icon: 'error',
